@@ -11,8 +11,8 @@ using namespace std;
 #include <GLFW/glfw3.h>
 
 // GL includes
-#include <learnopengl/shader.h>
-#include <learnopengl/camera.h>
+#include <lgl/shader.h>
+#include <lgl/camera.h>
 
 // GLM Mathemtics
 #include <glm/glm.hpp>
@@ -54,7 +54,7 @@ int main()
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
-	GLFWwindow* window = glfwCreateWindow(screenWidth, screenHeight, "LearnOpenGL", nullptr, nullptr); // Windowed
+	GLFWwindow* window = glfwCreateWindow(screenWidth, screenHeight, "Transmittance", nullptr, nullptr); // Windowed
 	glfwMakeContextCurrent(window);
 
 	// Set the required callback functions
