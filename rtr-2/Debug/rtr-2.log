@@ -1,15 +1,4 @@
-﻿  mapping.cpp
-c:\program files (x86)\microsoft visual studio 14.0\vc\include\lgl\shader.h(63): warning C4101: 'infoLog': unreferenced local variable
-c:\program files (x86)\microsoft visual studio 14.0\vc\include\lgl\shader.h(62): warning C4101: 'success': unreferenced local variable
-c:\users\saurabh\desktop\rtr-assignment-2\rtr-2\mapping.cpp(91): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\saurabh\desktop\rtr-assignment-2\rtr-2\mapping.cpp(297): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\saurabh\desktop\rtr-assignment-2\rtr-2\mapping.cpp(298): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\saurabh\desktop\rtr-assignment-2\rtr-2\mapping.cpp(302): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\saurabh\desktop\rtr-assignment-2\rtr-2\mapping.cpp(303): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\saurabh\desktop\rtr-assignment-2\rtr-2\mapping.cpp(305): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\saurabh\desktop\rtr-assignment-2\rtr-2\mapping.cpp(306): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\saurabh\desktop\rtr-assignment-2\rtr-2\mapping.cpp(313): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-  cubemap.cpp
+﻿  cubemap.cpp
 c:\program files (x86)\microsoft visual studio 14.0\vc\include\lgl\shader.h(63): warning C4101: 'infoLog': unreferenced local variable
 c:\program files (x86)\microsoft visual studio 14.0\vc\include\lgl\shader.h(62): warning C4101: 'success': unreferenced local variable
 c:\users\saurabh\desktop\rtr-assignment-2\rtr-2\cubemap.cpp(217): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
@@ -20,13 +9,5 @@ c:\users\saurabh\desktop\rtr-assignment-2\rtr-2\cubemap.cpp(364): warning C4244:
 c:\users\saurabh\desktop\rtr-assignment-2\rtr-2\cubemap.cpp(366): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
 c:\users\saurabh\desktop\rtr-assignment-2\rtr-2\cubemap.cpp(367): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
 c:\users\saurabh\desktop\rtr-assignment-2\rtr-2\cubemap.cpp(374): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-  Source.cpp
-c:\program files (x86)\microsoft visual studio 14.0\vc\include\lgl\shader.h(63): warning C4101: 'infoLog': unreferenced local variable
-c:\program files (x86)\microsoft visual studio 14.0\vc\include\lgl\shader.h(62): warning C4101: 'success': unreferenced local variable
-  Generating Code...
-  LINK : C:\Users\Saurabh\Desktop\rtr-assignment-2\Debug\rtr-2.exe not found or not built by the last incremental link; performing full link
-LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
-LINK : warning LNK4098: defaultlib 'LIBCMT' conflicts with use of other libs; use /NODEFAULTLIB:library
-glew32s.lib(glew.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'glew32s.lib(glew.obj)' or at 'C:\Users\Saurabh\Desktop\rtr-assignment-2\Debug\vc120.pdb'; linking object as if no debug info
   rtr-2.vcxproj -> C:\Users\Saurabh\Desktop\rtr-assignment-2\Debug\rtr-2.exe
   rtr-2.vcxproj -> C:\Users\Saurabh\Desktop\rtr-assignment-2\Debug\rtr-2.pdb (Full PDB)

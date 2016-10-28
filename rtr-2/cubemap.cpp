@@ -78,7 +78,7 @@ using namespace std;
 		glDepthFunc(GL_LESS);
 
 		// Setup and compile our shaders
-		Shader shader("shaders/cubemaps_refract.vs", "shaders/cubemaps_refract.frag");
+		Shader shader("shaders/cubemaps.vs", "shaders/cubemaps.frag");
 		Shader skyboxShader("shaders/skybox.vs", "shaders/skybox.frag");
 
 #pragma region "object_initialization"
