@@ -148,30 +148,31 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="cubemap.cpp" />
+    <ClCompile Include="mapping.cpp" />
+    <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Camera.h" />
-    <ClInclude Include="Mesh.h" />
-    <ClInclude Include="Model.h" />
-    <ClInclude Include="Shader.h" />
+    <None Include="shaders\cubemaps.frag" />
+    <None Include="shaders\cubemaps.vs" />
+    <None Include="shaders\cubemaps_refract.frag" />
+    <None Include="shaders\cubemaps_refract.vs" />
+    <None Include="shaders\lamp.frag" />
+    <None Include="shaders\lamp.vs" />
+    <None Include="shaders\normal_mapping.frag" />
+    <None Include="shaders\normal_mapping.vs" />
+    <None Include="shaders\skybox.frag" />
+    <None Include="shaders\skybox.vs" />
+    <None Include="shaders\text.frag" />
+    <None Include="shaders\text.vs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="cubemaps.frag" />
-    <None Include="cubemaps.vs" />
-    <None Include="cubemaps_refract.frag" />
-    <None Include="cubemaps_refract.vs" />
-    <None Include="lamp.frag" />
-    <None Include="lamp.vs" />
-    <None Include="skybox.frag" />
-    <None Include="skybox.vs" />
-    <None Include="text.frag" />
-    <None Include="text.vs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="bricks2.jpg" />
-    <Image Include="container.jpg" />
-    <Image Include="container2.png" />
-    <Image Include="container2_specular.png" />
+    <Image Include="images\bricks2.jpg" />
+    <Image Include="images\brickwall.jpg" />
+    <Image Include="images\brickwall_normal.jpg" />
+    <Image Include="images\container.jpg" />
+    <Image Include="images\container2.png" />
+    <Image Include="images\container2_specular.png" />
+    <Image Include="images\pattern4diffuseblack.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
