@@ -70,16 +70,16 @@ namespace mapping {
 		glEnable(GL_DEPTH_TEST);
 
 		// Setup and compile our shaders
-		Shader shader("normal_mapping.vs", "normal_mapping.frag");
+		Shader mappingShader("normal_mapping.vs", "normal_mapping.frag");
 
 		// Load textures
 		GLuint diffuseMap = loadTexture("brickwall.jpg");
 		GLuint normalMap = loadTexture("brickwall_normal.jpg");
 
 		// Set texture units 
-		shader.Use();
-		glUniform1i(glGetUniformLocation(shader.Program, "diffuseMap"), 0);
-		glUniform1i(glGetUniformLocation(shader.Program, "normalMap"), 1);
+		mappingShader.Use();
+		glUniform1i(glGetUniformLocation(mappingShader.Program, "diffuseMap"), 0);
+		glUniform1i(glGetUniformLocation(mappingShader.Program, "normalMap"), 1);
 
 		// Light position
 		glm::vec3 lightPos(0.5f, 1.0f, 0.3f);
@@ -101,17 +101,17 @@ namespace mapping {
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 			// Configure view/projection matrices
-			shader.Use();
-			glm::mat4 view = camera.GetViewMatrix();
-			glm::mat4 projection = glm::perspective(camera.Zoom, (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-			glUniformMatrix4fv(glGetUniformLocation(shader.Program, "view"), 1, GL_FALSE, glm::value_ptr(view));
-			glUniformMatrix4fv(glGetUniformLocation(shader.Program, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
+			mappingShader.Use();
+			glm::mat4 mappingView = camera.GetViewMatrix();
+			glm::mat4 mappingProjection = glm::perspective(camera.Zoom, (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+			glUniformMatrix4fv(glGetUniformLocation(mappingShader.Program, "view"), 1, GL_FALSE, glm::value_ptr(mappingView));
+			glUniformMatrix4fv(glGetUniformLocation(mappingShader.Program, "projection"), 1, GL_FALSE, glm::value_ptr(mappingProjection));
 			// Render normal-mapped quad
-			glm::mat4 model;
+			glm::mat4 mappingModel;
 			//model = glm::rotate(model, (GLfloat)glfwGetTime() * -10, glm::normalize(glm::vec3(1.0, 0.0, 1.0))); // Rotates the quad to show normal mapping works in all directions
-			glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-			glUniform3fv(glGetUniformLocation(shader.Program, "lightPos"), 1, &lightPos[0]);
-			glUniform3fv(glGetUniformLocation(shader.Program, "viewPos"), 1, &camera.Position[0]);
+			glUniformMatrix4fv(glGetUniformLocation(mappingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(mappingModel));
+			glUniform3fv(glGetUniformLocation(mappingShader.Program, "lightPos"), 1, &lightPos[0]);
+			glUniform3fv(glGetUniformLocation(mappingShader.Program, "viewPos"), 1, &camera.Position[0]);
 			glActiveTexture(GL_TEXTURE0);
 			glBindTexture(GL_TEXTURE_2D, diffuseMap);
 			glActiveTexture(GL_TEXTURE1);
@@ -119,10 +119,10 @@ namespace mapping {
 			RenderQuad();
 
 			// render light source (simply re-renders a smaller plane at the light's position for debugging/visualization)
-			model = glm::mat4();
-			model = glm::translate(model, lightPos);
-			model = glm::scale(model, glm::vec3(0.1f));
-			glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+			mappingModel = glm::mat4();
+			mappingModel = glm::translate(mappingModel, lightPos);
+			mappingModel = glm::scale(mappingModel, glm::vec3(0.1f));
+			glUniformMatrix4fv(glGetUniformLocation(mappingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(mappingModel));
 			RenderQuad();
 
 			// Swap the buffers

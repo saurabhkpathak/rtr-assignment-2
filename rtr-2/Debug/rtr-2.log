@@ -1,13 +1,13 @@
 ﻿  cubemap.cpp
 c:\program files (x86)\microsoft visual studio 14.0\vc\include\lgl\shader.h(63): warning C4101: 'infoLog': unreferenced local variable
 c:\program files (x86)\microsoft visual studio 14.0\vc\include\lgl\shader.h(62): warning C4101: 'success': unreferenced local variable
-c:\users\saurabh\desktop\rtr-assignment-2\rtr-2\cubemap.cpp(217): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\saurabh\desktop\rtr-assignment-2\rtr-2\cubemap.cpp(358): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\saurabh\desktop\rtr-assignment-2\rtr-2\cubemap.cpp(359): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\saurabh\desktop\rtr-assignment-2\rtr-2\cubemap.cpp(363): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\saurabh\desktop\rtr-assignment-2\rtr-2\cubemap.cpp(364): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\saurabh\desktop\rtr-assignment-2\rtr-2\cubemap.cpp(366): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\saurabh\desktop\rtr-assignment-2\rtr-2\cubemap.cpp(367): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\saurabh\desktop\rtr-assignment-2\rtr-2\cubemap.cpp(374): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\saurabh\desktop\rtr-assignment-2\rtr-2\cubemap.cpp(245): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\saurabh\desktop\rtr-assignment-2\rtr-2\cubemap.cpp(507): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\saurabh\desktop\rtr-assignment-2\rtr-2\cubemap.cpp(508): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\saurabh\desktop\rtr-assignment-2\rtr-2\cubemap.cpp(512): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\saurabh\desktop\rtr-assignment-2\rtr-2\cubemap.cpp(513): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\saurabh\desktop\rtr-assignment-2\rtr-2\cubemap.cpp(515): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\saurabh\desktop\rtr-assignment-2\rtr-2\cubemap.cpp(516): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\saurabh\desktop\rtr-assignment-2\rtr-2\cubemap.cpp(523): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
   rtr-2.vcxproj -> C:\Users\Saurabh\Desktop\rtr-assignment-2\Debug\rtr-2.exe
   rtr-2.vcxproj -> C:\Users\Saurabh\Desktop\rtr-assignment-2\Debug\rtr-2.pdb (Full PDB)

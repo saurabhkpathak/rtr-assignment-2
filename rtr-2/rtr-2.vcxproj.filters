@@ -68,6 +68,9 @@
     <None Include="shaders\text.vs">
       <Filter>Source Files\shaders</Filter>
     </None>
+    <None Include="fresnel.frag">
+      <Filter>Source Files\shaders</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="images\bricks2.jpg">
