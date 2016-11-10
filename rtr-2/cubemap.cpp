@@ -24,7 +24,7 @@ using namespace std;
 
 //namespace cubemap {
 // Properties
-	GLuint screenWidth = 800, screenHeight = 600;
+	GLuint screenWidth = 1800, screenHeight = 1200;
 
 	// Function prototypes
 	void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
@@ -208,12 +208,12 @@ using namespace std;
 
 		// Cubemap (Skybox)
 		std::vector<std::string> faces;
-		faces.push_back("skybox/right.jpg");
-		faces.push_back("skybox/left.jpg");
-		faces.push_back("skybox/top.jpg");
-		faces.push_back("skybox/bottom.jpg");
-		faces.push_back("skybox/back.jpg");
-		faces.push_back("skybox/front.jpg");
+		faces.push_back("skybox/right1.jpg");
+		faces.push_back("skybox/left1.jpg");
+		faces.push_back("skybox/top1.jpg");
+		faces.push_back("skybox/bottom1.jpg");
+		faces.push_back("skybox/back1.jpg");
+		faces.push_back("skybox/front1.jpg");
 		GLuint skyboxTexture = loadCubemap(faces);
 
 		// Draw as wireframe
