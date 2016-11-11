@@ -152,6 +152,8 @@
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="bot.frag" />
+    <None Include="bot.vs" />
     <None Include="fresnel.frag" />
     <None Include="shaders\cubemaps.frag" />
     <None Include="shaders\cubemaps.vs" />

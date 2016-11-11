@@ -13,6 +13,8 @@ using namespace std;
 // GL includes
 #include <lgl/shader.h>
 #include <lgl/camera.h>
+#include <lgl/model.h>
+#include <lgl/mesh.h>
 
 // GLM Mathemtics
 #include <glm/glm.hpp>
@@ -89,6 +91,7 @@ using namespace std;
 		Shader reflectionShader("shaders/cubemaps.vs", "shaders/cubemaps.frag");
 		Shader fresnelShader("shaders/cubemaps_refract.vs", "shaders/text.frag");
 		Shader skyboxShader("shaders/skybox.vs", "shaders/skybox.frag");
+		Shader botShader("bot.vs", "bot.frag");
 
 #pragma region "object_initialization"
 		// Set the object data (buffers, vertex attributes)
@@ -216,6 +219,10 @@ using namespace std;
 		faces.push_back("skybox/front1.jpg");
 		GLuint skyboxTexture = loadCubemap(faces);
 
+		// Load nanosuit using our model loader
+		Model nanosuit("objects/nanosuit.obj");
+		Model cyborg("objects/cyborg.obj");
+
 		// Draw as wireframe
 		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
@@ -257,17 +264,56 @@ using namespace std;
 
 			// Draw scene as normal
 			glm::mat4 model;
-			model = glm::translate(model, glm::vec3(3.0f, 0.0f, 0.0f));
+			model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
 			model = glm::rotate(model, (GLfloat)glfwGetTime(), glm::normalize(glm::vec3(0.0, 1.0, 0.0)));
 			glm::mat4 view = camera.GetViewMatrix();
 			glm::mat4 projection = glm::perspective(camera.Zoom, (float)screenWidth / (float)screenHeight, 1.0f, 100.0f);
-			setShader(shader, model, view, projection);
+			setShader(reflectionShader, model, view, projection);
 
 			// Cubes
 			glBindVertexArray(cubeVAO);
 			glBindTexture(GL_TEXTURE_CUBE_MAP, skyboxTexture);
 			glDrawArrays(GL_TRIANGLES, 0, 36);
 			glBindVertexArray(0);
+
+			glm::mat4 refractionModel;
+			refractionModel = glm::translate(refractionModel, glm::vec3(-3.0f, 0.0f, 0.0f));
+			refractionModel = glm::rotate(refractionModel, (GLfloat)glfwGetTime(), glm::normalize(glm::vec3(0.0, 1.0, 0.0)));
+			glm::mat4 refractionView = camera.GetViewMatrix();
+			glm::mat4 refractionProjection = glm::perspective(camera.Zoom, (float)screenWidth / (float)screenHeight, 5.0f, 100.0f);
+			setShader(shader, refractionModel, refractionView, refractionProjection);
+
+			// Cubes
+			glBindVertexArray(cubeVAO);
+			glBindTexture(GL_TEXTURE_CUBE_MAP, skyboxTexture);
+			glDrawArrays(GL_TRIANGLES, 0, 36);
+			glBindVertexArray(0);
+
+			// bot
+			glm::mat4 botModel;
+			botModel = glm::translate(botModel, glm::vec3(6.0f, 0.0f, 0.0f));
+			botModel = glm::rotate(botModel, (GLfloat)glfwGetTime(), glm::normalize(glm::vec3(0.0, 1.0, 0.0)));
+			glm::mat4 botView = camera.GetViewMatrix();
+			glm::mat4 botProjection = glm::perspective(camera.Zoom, (float)screenWidth / (float)screenHeight, 1.0f, 100.0f);
+			setShader(botShader, botModel, botView, botProjection);
+			glActiveTexture(GL_TEXTURE3); // We already have 3 texture units active (in this shader) so set the skybox as the 4th texture unit (texture units are 0 based so index number 3)
+			glUniform1i(glGetUniformLocation(botShader.Program, "skybox"), 3);
+			// Now draw the nanosuit
+			glBindTexture(GL_TEXTURE_CUBE_MAP, skyboxTexture);
+			nanosuit.Draw(botShader);
+
+			// cyborg
+			glm::mat4 cyborgModel;
+			cyborgModel = glm::translate(cyborgModel, glm::vec3(-6.0f, 0.0f, 0.0f));
+			cyborgModel = glm::rotate(cyborgModel, (GLfloat)glfwGetTime(), glm::normalize(glm::vec3(0.0, 1.0, 0.0)));
+			glm::mat4 cyborgView = camera.GetViewMatrix();
+			glm::mat4 cyborgProjection = glm::perspective(camera.Zoom, (float)screenWidth / (float)screenHeight, 1.0f, 100.0f);
+			setShader(fresnelShader, cyborgModel, cyborgView, cyborgProjection);
+			glActiveTexture(GL_TEXTURE10); // We already have 3 texture units active (in this shader) so set the skybox as the 4th texture unit (texture units are 0 based so index number 3)
+			glUniform1i(glGetUniformLocation(fresnelShader.Program, "skybox"), 3);
+			// Now draw the nanosuit
+			glBindTexture(GL_TEXTURE_CUBE_MAP, skyboxTexture);
+			cyborg.Draw(fresnelShader);
 
 			// Draw skybox as last
 			glDepthFunc(GL_LEQUAL);  // Change depth function so depth test passes when values are equal to depth buffer's content
@@ -277,6 +323,11 @@ using namespace std;
 			glUniformMatrix4fv(glGetUniformLocation(skyboxShader.Program, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
 			// skybox cube
 			glBindVertexArray(skyboxVAO);
+
+			// bot
+			glActiveTexture(GL_TEXTURE0);
+			glUniform1i(glGetUniformLocation(fresnelShader.Program, "skybox"), 0);
+
 			glBindTexture(GL_TEXTURE_CUBE_MAP, skyboxTexture);
 			glDrawArrays(GL_TRIANGLES, 0, 36);
 			glBindVertexArray(0);
@@ -292,7 +343,7 @@ using namespace std;
 			glUniformMatrix4fv(glGetUniformLocation(mappingShader.Program, "projection"), 1, GL_FALSE, glm::value_ptr(mappingProjection));
 			// Render normal-mapped quad
 			glm::mat4 mappingModel;
-			//mappingModel = glm::translate(mappingModel, glm::vec3(3.0f, 0.0f, 0.0f));
+			mappingModel = glm::translate(mappingModel, glm::vec3(3.0f, -3.0f, 0.0f));
 			mappingModel = glm::rotate(mappingModel, (GLfloat)glfwGetTime(), glm::normalize(glm::vec3(0.0, 1.0, 0.0))); // Rotates the quad to show normal mapping works in all directions
 			glUniformMatrix4fv(glGetUniformLocation(mappingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(mappingModel));
 			glUniform3fv(glGetUniformLocation(mappingShader.Program, "lightPos"), 1, &lightPos[0]);
@@ -341,6 +392,7 @@ using namespace std;
 		{
 			image = SOIL_load_image(faces[i].c_str(), &width, &height, 0, SOIL_LOAD_RGB);
 			glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
+			SOIL_free_image_data(image);
 		}
 		glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 		glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR);

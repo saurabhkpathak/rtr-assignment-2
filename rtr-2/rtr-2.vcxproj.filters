@@ -71,6 +71,12 @@
     <None Include="fresnel.frag">
       <Filter>Source Files\shaders</Filter>
     </None>
+    <None Include="bot.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="bot.vs">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="images\bricks2.jpg">
